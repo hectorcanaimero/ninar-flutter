@@ -8,3 +8,5 @@ export '/pages/list_stories_page/list_stories_page_widget.dart'
 export '/pages/view_story_page/view_story_page_widget.dart'
     show ViewStoryPageWidget;
 export '/pages/about_page/about_page_widget.dart' show AboutPageWidget;
+export '/pages/creating_story_page/creating_story_page_widget.dart'
+    show CreatingStoryPageWidget;

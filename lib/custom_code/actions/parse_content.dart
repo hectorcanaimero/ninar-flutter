@@ -8,16 +8,16 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'package:flutter/services.dart';
+import 'dart:convert';
 
-Future lockOrientation() async {
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-
-/*
-await SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]);
-*/
-
-/*
-await SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeRight]);
-*/
+Future<String> parseContent(
+  String content,
+  int type,
+) async {
+  Map<String, dynamic> jsonObj = json.decode(content);
+  if (type == 1) {
+    return jsonObj['title'] ?? '';
+  } else {
+    return jsonObj['body'] ?? '';
+  }
 }

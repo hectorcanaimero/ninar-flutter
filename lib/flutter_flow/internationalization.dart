@@ -138,8 +138,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'sf9a3y60': {
       'en': 'Home',
-      'es': 'Hogar',
-      'pt': 'Lar',
+      'es': 'Home',
+      'pt': 'Home',
     },
   },
   // CreateStoryPage
@@ -156,8 +156,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '3jhv8s6q': {
       'en': '',
-      'es': 'Etiqueta aquí...',
-      'pt': 'Etiqueta aqui...',
+      'es': '',
+      'pt': '',
     },
     'jke5pzjx': {
       'en': 'What is the character\'s age?',
@@ -170,7 +170,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Qual é o tema da história?',
     },
     'gz8u88sw': {
-      'en': '',
+      'en': 'Select...',
       'es': 'Seleccionar...',
       'pt': 'Selecione...',
     },
@@ -186,8 +186,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '0xdnvv14': {
       'en': 'Home',
-      'es': 'Hogar',
-      'pt': 'Lar',
+      'es': 'Home',
+      'pt': 'Home',
     },
   },
   // ListStoriesPage
@@ -214,26 +214,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'oz3ay72t': {
       'en': 'Home',
-      'es': 'Hogar',
-      'pt': 'Lar',
+      'es': 'Home',
+      'pt': 'Home',
     },
   },
   // ViewStoryPage
   {
-    '21qph0kf': {
-      'en': 'Hello World',
-      'es': 'Hola Mundo',
-      'pt': 'Olá Mundo',
-    },
-    'zfq4jzhv': {
-      'en': 'Hello World',
-      'es': 'Hola Mundo',
-      'pt': 'Olá Mundo',
-    },
     'kehgbrg1': {
       'en': 'Home',
-      'es': 'Hogar',
-      'pt': 'Lar',
+      'es': 'Home',
+      'pt': 'Home',
     },
   },
   // AboutPage
@@ -242,6 +232,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Home',
       'es': 'Hogar',
       'pt': 'Lar',
+    },
+  },
+  // CreatingStoryPage
+  {
+    'dqvnmjez': {
+      'en': 'We are generating your story',
+      'es': 'Estamos generando tu historia',
+      'pt': 'Estamos gerando sua história',
+    },
+    '5i59jvbg': {
+      'en': 'Home',
+      'es': 'Home',
+      'pt': 'Home',
     },
   },
   // CreditWidget
@@ -281,8 +284,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'p90owz0z': {
       'en': '',
-      'es': '',
-      'pt': '',
+      'es': 'Email Obrigatorio',
+      'pt': 'Email Obrigatorio',
     },
     'q1u0oow2': {
       'en': '',

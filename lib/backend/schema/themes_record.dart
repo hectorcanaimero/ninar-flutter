@@ -16,19 +16,19 @@ class ThemesRecord extends FirestoreRecord {
     _initializeFields();
   }
 
-  // "name" field.
-  String? _name;
-  String get name => _name ?? '';
-  bool hasName() => _name != null;
+  // "locale" field.
+  String? _locale;
+  String get locale => _locale ?? '';
+  bool hasLocale() => _locale != null;
 
-  // "description" field.
-  String? _description;
-  String get description => _description ?? '';
-  bool hasDescription() => _description != null;
+  // "list" field.
+  List<String>? _list;
+  List<String> get list => _list ?? const [];
+  bool hasList() => _list != null;
 
   void _initializeFields() {
-    _name = snapshotData['name'] as String?;
-    _description = snapshotData['description'] as String?;
+    _locale = snapshotData['locale'] as String?;
+    _list = getDataList(snapshotData['list']);
   }
 
   static CollectionReference get collection =>
@@ -65,13 +65,11 @@ class ThemesRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createThemesRecordData({
-  String? name,
-  String? description,
+  String? locale,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
-      'name': name,
-      'description': description,
+      'locale': locale,
     }.withoutNulls,
   );
 
@@ -83,12 +81,12 @@ class ThemesRecordDocumentEquality implements Equality<ThemesRecord> {
 
   @override
   bool equals(ThemesRecord? e1, ThemesRecord? e2) {
-    return e1?.name == e2?.name && e1?.description == e2?.description;
+    const listEquality = ListEquality();
+    return e1?.locale == e2?.locale && listEquality.equals(e1?.list, e2?.list);
   }
 
   @override
-  int hash(ThemesRecord? e) =>
-      const ListEquality().hash([e?.name, e?.description]);
+  int hash(ThemesRecord? e) => const ListEquality().hash([e?.locale, e?.list]);
 
   @override
   bool isValidKey(Object? o) => o is ThemesRecord;

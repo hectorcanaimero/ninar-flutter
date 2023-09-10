@@ -29,6 +29,8 @@ class _CreateStoryPageWidgetState extends State<CreateStoryPageWidget> {
     super.initState();
     _model = createModel(context, () => CreateStoryPageModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'CreateStoryPage'});
     _model.textController ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -43,7 +45,11 @@ class _CreateStoryPageWidgetState extends State<CreateStoryPageWidget> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<List<ThemesRecord>>(
-      stream: queryThemesRecord(),
+      stream: queryThemesRecord(
+        queryBuilder: (themesRecord) => themesRecord.where('locale',
+            isEqualTo: FFLocalizations.of(context).languageCode),
+        singleRecord: true,
+      ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -63,6 +69,14 @@ class _CreateStoryPageWidgetState extends State<CreateStoryPageWidget> {
           );
         }
         List<ThemesRecord> createStoryPageThemesRecordList = snapshot.data!;
+        // Return an empty Container when the item does not exist.
+        if (snapshot.data!.isEmpty) {
+          return Container();
+        }
+        final createStoryPageThemesRecord =
+            createStoryPageThemesRecordList.isNotEmpty
+                ? createStoryPageThemesRecordList.first
+                : null;
         return GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
           child: Scaffold(
@@ -82,6 +96,8 @@ class _CreateStoryPageWidgetState extends State<CreateStoryPageWidget> {
                   size: 30.0,
                 ),
                 onPressed: () async {
+                  logFirebaseEvent('CREATE_STORY_arrow_back_ios_rounded_ICN_');
+                  logFirebaseEvent('IconButton_navigate_back');
                   context.pop();
                 },
               ),
@@ -123,11 +139,6 @@ class _CreateStoryPageWidgetState extends State<CreateStoryPageWidget> {
                                           fontWeight: FontWeight.bold,
                                         ),
                                   ),
-                                ),
-                                Text(
-                                  FFLocalizations.of(context).languageCode,
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
                                 ),
                                 Align(
                                   alignment: AlignmentDirectional(-1.00, 0.00),
@@ -265,7 +276,12 @@ class _CreateStoryPageWidgetState extends State<CreateStoryPageWidget> {
                                         ),
                                       ),
                                       Text(
-                                        '${_model.sliderValue.toString()} years',
+                                        formatNumber(
+                                          _model.sliderValue,
+                                          formatType: FormatType.custom,
+                                          format: '#',
+                                          locale: '',
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -294,21 +310,17 @@ class _CreateStoryPageWidgetState extends State<CreateStoryPageWidget> {
                                 ),
                                 FlutterFlowDropDown<String>(
                                   controller: _model.dropDownValueController ??=
-                                      FormFieldController<String>(
-                                    _model.dropDownValue ??= '',
-                                  ),
-                                  options: createStoryPageThemesRecordList
-                                      .map((e) => e.description)
-                                      .toList(),
-                                  optionLabels: createStoryPageThemesRecordList
-                                      .map((e) => e.name)
-                                      .toList(),
+                                      FormFieldController<String>(null),
+                                  options: createStoryPageThemesRecord!.list,
                                   onChanged: (val) => setState(
                                       () => _model.dropDownValue = val),
                                   width: double.infinity,
                                   height: 60.0,
                                   textStyle:
                                       FlutterFlowTheme.of(context).bodyMedium,
+                                  hintText: FFLocalizations.of(context).getText(
+                                    'gz8u88sw' /* Select... */,
+                                  ),
                                   icon: Icon(
                                     Icons.keyboard_arrow_down_rounded,
                                     color: FlutterFlowTheme.of(context)
@@ -327,36 +339,69 @@ class _CreateStoryPageWidgetState extends State<CreateStoryPageWidget> {
                                   isSearchable: false,
                                   isMultiSelect: false,
                                 ),
-                                FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
-                                  },
-                                  text: FFLocalizations.of(context).getText(
-                                    'cpzdetn0' /* Create Story */,
-                                  ),
-                                  options: FFButtonOptions(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.8,
-                                    height: 60.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: Colors.white,
-                                          fontSize: 24.0,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                    elevation: 3.0,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 30.0),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      logFirebaseEvent(
+                                          'CREATE_STORY_CREATE_STORY_BTN_ON_TAP');
+                                      logFirebaseEvent('Button_navigate_to');
+
+                                      context.pushNamed(
+                                        'CreatingStoryPage',
+                                        queryParameters: {
+                                          'character': serializeParam(
+                                            _model.textController.text,
+                                            ParamType.String,
+                                          ),
+                                          'age': serializeParam(
+                                            _model.sliderValue?.toString(),
+                                            ParamType.String,
+                                          ),
+                                          'theme': serializeParam(
+                                            _model.dropDownValue,
+                                            ParamType.String,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.bottomToTop,
+                                          ),
+                                        },
+                                      );
+                                    },
+                                    text: FFLocalizations.of(context).getText(
+                                      'cpzdetn0' /* Create Story */,
                                     ),
-                                    borderRadius: BorderRadius.circular(16.0),
+                                    options: FFButtonOptions(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          0.8,
+                                      height: 60.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 0.0, 24.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: Colors.white,
+                                            fontSize: 24.0,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                      elevation: 3.0,
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(16.0),
+                                    ),
                                   ),
                                 ),
                               ].divide(SizedBox(height: 16.0)),

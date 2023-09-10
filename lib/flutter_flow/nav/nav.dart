@@ -110,12 +110,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ViewStoryPage',
           path: '/viewStoryPage',
-          builder: (context, params) => ViewStoryPageWidget(),
+          builder: (context, params) => ViewStoryPageWidget(
+            image: params.getParam('image', ParamType.String),
+            content: params.getParam('content', ParamType.String),
+          ),
         ),
         FFRoute(
           name: 'AboutPage',
           path: '/aboutPage',
           builder: (context, params) => AboutPageWidget(),
+        ),
+        FFRoute(
+          name: 'CreatingStoryPage',
+          path: '/creatingStoryPage',
+          builder: (context, params) => CreatingStoryPageWidget(
+            character: params.getParam('character', ParamType.String),
+            age: params.getParam('age', ParamType.String),
+            theme: params.getParam('theme', ParamType.String),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

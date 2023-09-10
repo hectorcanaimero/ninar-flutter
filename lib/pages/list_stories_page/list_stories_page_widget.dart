@@ -25,6 +25,9 @@ class _ListStoriesPageWidgetState extends State<ListStoriesPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ListStoriesPageModel());
+
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'ListStoriesPage'});
   }
 
   @override
@@ -55,6 +58,8 @@ class _ListStoriesPageWidgetState extends State<ListStoriesPageWidget> {
               size: 30.0,
             ),
             onPressed: () async {
+              logFirebaseEvent('LIST_STORIES_arrow_back_ios_rounded_ICN_');
+              logFirebaseEvent('IconButton_navigate_back');
               context.pop();
             },
           ),

@@ -25,6 +25,8 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AuthPageModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'AuthPage'});
   }
 
   @override
@@ -67,11 +69,15 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
+                      logFirebaseEvent(
+                          'AUTH_PAGE_PAGE_Container_s99ui8hb_ON_TAP');
+                      logFirebaseEvent('Container_auth');
                       GoRouter.of(context).prepareAuthEvent();
                       final user = await authManager.signInWithGoogle(context);
                       if (user == null) {
                         return;
                       }
+                      logFirebaseEvent('Container_navigate_to');
 
                       context.pushNamedAuth(
                         'HomePage',
@@ -84,6 +90,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                         },
                       );
 
+                      logFirebaseEvent('Container_show_snack_bar');
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(

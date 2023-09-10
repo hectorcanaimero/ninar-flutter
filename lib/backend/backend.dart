@@ -7,6 +7,7 @@ import 'schema/util/firestore_util.dart';
 
 import 'schema/themes_record.dart';
 import 'schema/users_record.dart';
+import 'schema/stories_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -16,6 +17,7 @@ export 'schema/util/schema_util.dart';
 
 export 'schema/themes_record.dart';
 export 'schema/users_record.dart';
+export 'schema/stories_record.dart';
 
 /// Functions to query ThemesRecords (as a Stream and as a Future).
 Future<int> queryThemesRecordCount({
@@ -86,6 +88,43 @@ Future<List<UsersRecord>> queryUsersRecordOnce({
     queryCollectionOnce(
       UsersRecord.collection,
       UsersRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query StoriesRecords (as a Stream and as a Future).
+Future<int> queryStoriesRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      StoriesRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<StoriesRecord>> queryStoriesRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      StoriesRecord.collection,
+      StoriesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<StoriesRecord>> queryStoriesRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      StoriesRecord.collection,
+      StoriesRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

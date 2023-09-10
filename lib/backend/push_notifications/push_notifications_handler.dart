@@ -116,8 +116,20 @@ final parametersBuilderMap =
   'AuthPage': ParameterData.none(),
   'CreateStoryPage': ParameterData.none(),
   'ListStoriesPage': ParameterData.none(),
-  'ViewStoryPage': ParameterData.none(),
+  'ViewStoryPage': (data) async => ParameterData(
+        allParams: {
+          'image': getParameter<String>(data, 'image'),
+          'content': getParameter<String>(data, 'content'),
+        },
+      ),
   'AboutPage': ParameterData.none(),
+  'CreatingStoryPage': (data) async => ParameterData(
+        allParams: {
+          'character': getParameter<String>(data, 'character'),
+          'age': getParameter<String>(data, 'age'),
+          'theme': getParameter<String>(data, 'theme'),
+        },
+      ),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

@@ -25,6 +25,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'HomePage'});
   }
 
   @override
@@ -119,6 +121,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () async {
+                          logFirebaseEvent(
+                              'HOME_PAGE_PAGE_CREATE_STORY_BTN_ON_TAP');
+                          logFirebaseEvent('Button_navigate_to');
+
                           context.pushNamed('CreateStoryPage');
                         },
                         text: FFLocalizations.of(context).getText(
@@ -149,6 +155,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () async {
+                          logFirebaseEvent(
+                              'HOME_PAGE_PAGE_MY_STORIES_BTN_ON_TAP');
+                          logFirebaseEvent('Button_navigate_to');
+
                           context.pushNamed('ListStoriesPage');
                         },
                         text: FFLocalizations.of(context).getText(
@@ -165,7 +175,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Poppins',
-                                    color: Color(0xA1000000),
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
                                     fontSize: 24.0,
                                     fontWeight: FontWeight.w600,
                                   ),

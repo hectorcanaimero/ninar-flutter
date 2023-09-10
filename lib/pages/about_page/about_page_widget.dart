@@ -23,6 +23,8 @@ class _AboutPageWidgetState extends State<AboutPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AboutPageModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'AboutPage'});
   }
 
   @override

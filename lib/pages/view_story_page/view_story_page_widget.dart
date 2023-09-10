@@ -3,6 +3,8 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +12,14 @@ import 'view_story_page_model.dart';
 export 'view_story_page_model.dart';
 
 class ViewStoryPageWidget extends StatefulWidget {
-  const ViewStoryPageWidget({Key? key}) : super(key: key);
+  const ViewStoryPageWidget({
+    Key? key,
+    this.image,
+    required this.content,
+  }) : super(key: key);
+
+  final String? image;
+  final String? content;
 
   @override
   _ViewStoryPageWidgetState createState() => _ViewStoryPageWidgetState();
@@ -25,6 +34,9 @@ class _ViewStoryPageWidgetState extends State<ViewStoryPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ViewStoryPageModel());
+
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'ViewStoryPage'});
   }
 
   @override
@@ -55,21 +67,33 @@ class _ViewStoryPageWidgetState extends State<ViewStoryPageWidget> {
               size: 30.0,
             ),
             onPressed: () async {
+              logFirebaseEvent('VIEW_STORY_arrow_back_ios_rounded_ICN_ON');
+              logFirebaseEvent('IconButton_navigate_back');
               context.pop();
             },
           ),
           actions: [
-            FlutterFlowIconButton(
-              borderWidth: 1.0,
-              buttonSize: 50.0,
-              icon: Icon(
-                Icons.more_vert_sharp,
-                color: FlutterFlowTheme.of(context).primary,
-                size: 28.0,
+            MouseRegion(
+              opaque: false,
+              cursor: MouseCursor.defer ?? MouseCursor.defer,
+              child: FlutterFlowIconButton(
+                borderWidth: 1.0,
+                buttonSize: 50.0,
+                icon: Icon(
+                  Icons.more_vert_sharp,
+                  color: FlutterFlowTheme.of(context).primary,
+                  size: 28.0,
+                ),
+                onPressed: () {
+                  print('IconButton pressed ...');
+                },
               ),
-              onPressed: () {
-                print('IconButton pressed ...');
-              },
+              onEnter: ((event) async {
+                setState(() => _model.mouseRegionHovered = true);
+              }),
+              onExit: ((event) async {
+                setState(() => _model.mouseRegionHovered = false);
+              }),
             ),
           ],
           centerTitle: true,
@@ -91,24 +115,44 @@ class _ViewStoryPageWidgetState extends State<ViewStoryPageWidget> {
                       children: [
                         ClipRRect(
                           borderRadius: BorderRadius.circular(0.0),
-                          child: Image.network(
-                            'https://picsum.photos/seed/196/600',
+                          child: CachedNetworkImage(
+                            fadeInDuration: Duration(milliseconds: 500),
+                            fadeOutDuration: Duration(milliseconds: 500),
+                            imageUrl: widget.image!,
                             width: double.infinity,
                             height: 300.0,
                             fit: BoxFit.cover,
                           ),
                         ),
-                        Text(
-                          FFLocalizations.of(context).getText(
-                            '21qph0kf' /* Hello World */,
+                        Align(
+                          alignment: AlignmentDirectional(-1.00, 0.00),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                12.0, 0.0, 12.0, 0.0),
+                            child: Text(
+                              functions.parseStory(widget.content!, 1),
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                            ),
                           ),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
                         ),
-                        Text(
-                          FFLocalizations.of(context).getText(
-                            'zfq4jzhv' /* Hello World */,
+                        Align(
+                          alignment: AlignmentDirectional(-1.00, 0.00),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                12.0, 0.0, 12.0, 0.0),
+                            child: Text(
+                              functions.parseStory(widget.content!, 2),
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            ),
                           ),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
                         ),
                       ].divide(SizedBox(height: 16.0)),
                     ),
