@@ -73,7 +73,33 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                         return;
                       }
 
-                      context.goNamedAuth('HomePage', context.mounted);
+                      context.pushNamedAuth(
+                        'HomePage',
+                        context.mounted,
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.fade,
+                          ),
+                        },
+                      );
+
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'Successful login',
+                            style: GoogleFonts.getFont(
+                              'Poppins',
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                              fontSize: 14.0,
+                            ),
+                          ),
+                          duration: Duration(milliseconds: 3000),
+                          backgroundColor:
+                              FlutterFlowTheme.of(context).alternate,
+                        ),
+                      );
                     },
                     child: Material(
                       color: Colors.transparent,
@@ -82,7 +108,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                         borderRadius: BorderRadius.circular(24.0),
                       ),
                       child: Container(
-                        width: double.infinity,
+                        width: MediaQuery.sizeOf(context).width * 0.8,
                         height: 50.0,
                         decoration: BoxDecoration(
                           color:
@@ -121,7 +147,7 @@ class _AuthPageWidgetState extends State<AuthPageWidget> {
                                         fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
-                                        fontSize: 16.0,
+                                        fontSize: 14.0,
                                         fontWeight: FontWeight.w500,
                                       ),
                                 ),

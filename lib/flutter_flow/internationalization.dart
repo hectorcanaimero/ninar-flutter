@@ -120,7 +120,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'e1j1vtet': {
       'en': 'Credits and greetings',
-      'es': 'Créditos y agradecimentos',
+      'es': 'creditos y agradecimientos',
       'pt': 'Créditos e agradecimentos',
     },
     'k51zmoxx': {
@@ -146,43 +146,43 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'iijmxh1u': {
       'en': 'Creating a story',
-      'es': '',
-      'pt': '',
+      'es': 'Creando una historia',
+      'pt': 'Criando uma história',
     },
     'zzrsqwxs': {
       'en': 'What is the name of the main character?',
-      'es': '',
-      'pt': '',
+      'es': '¿Cómo se llama el personaje principal?',
+      'pt': 'Qual é o nome do personagem principal?',
     },
     '3jhv8s6q': {
       'en': 'Label here...',
-      'es': '',
-      'pt': '',
+      'es': 'Etiqueta aquí...',
+      'pt': 'Etiqueta aqui...',
     },
     'jke5pzjx': {
       'en': 'What is the character\'s age?',
-      'es': '',
-      'pt': '',
+      'es': '¿Cuál es la edad del personaje?',
+      'pt': 'Qual é a idade do personagem?',
     },
     'r7jvqu6f': {
       'en': 'What is the theme of the story?',
-      'es': '',
-      'pt': '',
+      'es': '¿Cuál es el tema de la historia?',
+      'pt': 'Qual é o tema da história?',
     },
     'gz8u88sw': {
       'en': 'Select...',
-      'es': '',
-      'pt': '',
+      'es': 'Seleccionar...',
+      'pt': 'Selecione...',
     },
     '1kj32na3': {
       'en': 'Search for an item...',
-      'es': '',
-      'pt': '',
+      'es': 'Buscar un artículo...',
+      'pt': 'Procure um item...',
     },
     'cpzdetn0': {
       'en': 'Create Story',
-      'es': '',
-      'pt': '',
+      'es': 'Crear historia',
+      'pt': 'Criar história',
     },
     '0xdnvv14': {
       'en': 'Home',
@@ -194,23 +194,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'vn65i5h6': {
       'en': 'Hello World',
-      'es': '',
-      'pt': '',
+      'es': 'Hola Mundo',
+      'pt': 'Olá Mundo',
     },
     'au1p377w': {
       'en': 'Title',
-      'es': '',
-      'pt': '',
+      'es': 'Título',
+      'pt': 'Título',
     },
     'i1syo1uq': {
       'en': 'Subtitle',
-      'es': '',
-      'pt': '',
+      'es': 'Subtitular',
+      'pt': 'Legenda',
     },
     'r6g70exw': {
       'en': 'subtext',
-      'es': '',
-      'pt': '',
+      'es': 'trasfondo',
+      'pt': 'sub-texto',
     },
     'oz3ay72t': {
       'en': 'Home',
@@ -222,13 +222,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '21qph0kf': {
       'en': 'Hello World',
-      'es': '',
-      'pt': '',
+      'es': 'Hola Mundo',
+      'pt': 'Olá Mundo',
     },
     'zfq4jzhv': {
       'en': 'Hello World',
-      'es': '',
-      'pt': '',
+      'es': 'Hola Mundo',
+      'pt': 'Olá Mundo',
     },
     'kehgbrg1': {
       'en': 'Home',
@@ -248,23 +248,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '0pn8d7m6': {
       'en': 'Create Note',
-      'es': '',
-      'pt': '',
+      'es': 'Crear nota',
+      'pt': 'Criar nota',
     },
     'md8rfh95': {
       'en': 'Find members by searching below',
-      'es': '',
-      'pt': '',
+      'es': 'Encuentre miembros buscando a continuación',
+      'pt': 'Encontre membros pesquisando abaixo',
     },
     'ee2g7y70': {
       'en': 'Enter your note here...',
-      'es': '',
-      'pt': '',
+      'es': 'Introduce tu nota aquí...',
+      'pt': 'Digite sua nota aqui...',
     },
     'p9rfdsnm': {
       'en': 'Create Note',
-      'es': '',
-      'pt': '',
+      'es': 'Crear nota',
+      'pt': 'Criar nota',
     },
   },
   // Miscellaneous
