@@ -137,17 +137,18 @@ class _CreatingStoryPageWidgetState extends State<CreatingStoryPageWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Container(
-                width: double.infinity,
-                height: MediaQuery.sizeOf(context).height * 1.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                ),
-                child: FlutterFlowAdBanner(
+              Expanded(
+                child: Container(
                   width: double.infinity,
-                  height: double.infinity,
-                  showsTestAd: true,
-                  androidAdUnitID: 'ca-app-pub-1769333170353019/5418958657',
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                  ),
+                  child: FlutterFlowAdBanner(
+                    width: double.infinity,
+                    height: double.infinity,
+                    showsTestAd: true,
+                    androidAdUnitID: 'ca-app-pub-1769333170353019/5418958657',
+                  ),
                 ),
               ),
             ],
