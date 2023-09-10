@@ -236,11 +236,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // CreatingStoryPage
   {
-    'dqvnmjez': {
-      'en': 'We are generating your story',
-      'es': 'Estamos generando tu historia',
-      'pt': 'Estamos gerando sua história',
-    },
     '5i59jvbg': {
       'en': 'Home',
       'es': 'Home',

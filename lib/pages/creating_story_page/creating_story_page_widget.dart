@@ -2,7 +2,6 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_ad_banner.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -10,7 +9,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'creating_story_page_model.dart';
@@ -33,26 +31,10 @@ class CreatingStoryPageWidget extends StatefulWidget {
       _CreatingStoryPageWidgetState();
 }
 
-class _CreatingStoryPageWidgetState extends State<CreatingStoryPageWidget>
-    with TickerProviderStateMixin {
+class _CreatingStoryPageWidgetState extends State<CreatingStoryPageWidget> {
   late CreatingStoryPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  final animationsMap = {
-    'iconOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        RotateEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 5000.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-  };
 
   @override
   void initState() {
@@ -157,38 +139,7 @@ class _CreatingStoryPageWidgetState extends State<CreatingStoryPageWidget>
             children: [
               Container(
                 width: double.infinity,
-                height: MediaQuery.sizeOf(context).height * 0.2,
-                decoration: BoxDecoration(),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
-                      child: Icon(
-                        Icons.settings_outlined,
-                        color: FlutterFlowTheme.of(context).primary,
-                        size: 56.0,
-                      ).animateOnPageLoad(
-                          animationsMap['iconOnPageLoadAnimation']!),
-                    ),
-                    Text(
-                      FFLocalizations.of(context).getText(
-                        'dqvnmjez' /* We are generating your story */,
-                      ),
-                      style: FlutterFlowTheme.of(context).titleLarge.override(
-                            fontFamily: 'Poppins',
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.w600,
-                          ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                height: MediaQuery.sizeOf(context).height * 0.8,
+                height: MediaQuery.sizeOf(context).height * 1.0,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
