@@ -155,7 +155,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Qual é o nome do personagem principal?',
     },
     '3jhv8s6q': {
-      'en': 'Label here...',
+      'en': '',
       'es': 'Etiqueta aquí...',
       'pt': 'Etiqueta aqui...',
     },
@@ -170,7 +170,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Qual é o tema da história?',
     },
     'gz8u88sw': {
-      'en': 'Select...',
+      'en': '',
       'es': 'Seleccionar...',
       'pt': 'Selecione...',
     },

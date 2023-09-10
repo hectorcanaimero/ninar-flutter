@@ -46,11 +46,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           automaticallyImplyLeading: false,
           actions: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 12.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 6.0, 12.0, 0.0),
               child: AuthUserStreamWidget(
                 builder: (context) => Container(
-                  width: 60.0,
-                  height: 60.0,
+                  width: 40.0,
+                  height: 40.0,
                   clipBehavior: Clip.antiAlias,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -96,8 +96,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
                         child: CachedNetworkImage(
-                          fadeInDuration: Duration(milliseconds: 500),
-                          fadeOutDuration: Duration(milliseconds: 500),
+                          fadeInDuration: Duration(milliseconds: 300),
+                          fadeOutDuration: Duration(milliseconds: 300),
                           imageUrl:
                               'https://firebasestorage.googleapis.com/v0/b/ninar-ia.appspot.com/o/logo.png?alt=media&token=b31e5c97-1d6f-4bfa-916c-078843901d53',
                           width: 300.0,

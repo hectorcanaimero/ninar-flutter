@@ -124,6 +124,11 @@ class _CreateStoryPageWidgetState extends State<CreateStoryPageWidget> {
                                         ),
                                   ),
                                 ),
+                                Text(
+                                  FFLocalizations.of(context).languageCode,
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                ),
                                 Align(
                                   alignment: AlignmentDirectional(-1.00, 0.00),
                                   child: Text(
@@ -146,10 +151,6 @@ class _CreateStoryPageWidgetState extends State<CreateStoryPageWidget> {
                                     textInputAction: TextInputAction.next,
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      labelText:
-                                          FFLocalizations.of(context).getText(
-                                        '3jhv8s6q' /* Label here... */,
-                                      ),
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
@@ -264,7 +265,7 @@ class _CreateStoryPageWidgetState extends State<CreateStoryPageWidget> {
                                         ),
                                       ),
                                       Text(
-                                        '${_model.sliderValue?.toString()} years',
+                                        '${_model.sliderValue.toString()} years',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -308,9 +309,6 @@ class _CreateStoryPageWidgetState extends State<CreateStoryPageWidget> {
                                   height: 60.0,
                                   textStyle:
                                       FlutterFlowTheme.of(context).bodyMedium,
-                                  hintText: FFLocalizations.of(context).getText(
-                                    'gz8u88sw' /* Select... */,
-                                  ),
                                   icon: Icon(
                                     Icons.keyboard_arrow_down_rounded,
                                     color: FlutterFlowTheme.of(context)
@@ -320,8 +318,7 @@ class _CreateStoryPageWidgetState extends State<CreateStoryPageWidget> {
                                   fillColor: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
                                   elevation: 2.0,
-                                  borderColor:
-                                      FlutterFlowTheme.of(context).alternate,
+                                  borderColor: Colors.transparent,
                                   borderWidth: 2.0,
                                   borderRadius: 8.0,
                                   margin: EdgeInsetsDirectional.fromSTEB(
