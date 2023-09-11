@@ -236,6 +236,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // CreatingStoryPage
   {
+    '1qji74qr': {
+      'en': 'We are generating your story',
+      'es': '',
+      'pt': '',
+    },
     '5i59jvbg': {
       'en': 'Home',
       'es': 'Home',
