@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/admob_util.dart' as admob;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -65,10 +64,6 @@ class _CreatingStoryPageWidgetState extends State<CreatingStoryPageWidget>
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('CREATING_STORY_CreatingStoryPage_ON_INIT');
-      logFirebaseEvent('CreatingStoryPage_ad_mob');
-
-      _model.interstitialAdSuccess = await admob.showInterstitialAd();
-
       logFirebaseEvent('CreatingStoryPage_backend_call');
       _model.apiResult0yi = await OpenAIGroup.storyGenerationCall.call(
         theme: widget.theme,
@@ -181,7 +176,7 @@ class _CreatingStoryPageWidgetState extends State<CreatingStoryPageWidget>
                               animationsMap['iconOnPageLoadAnimation']!),
                           Text(
                             FFLocalizations.of(context).getText(
-                              '1qji74qr' /* We are generating your story */,
+                              'hucvb1cj' /* We are generating your story */,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .titleLarge

@@ -236,7 +236,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // CreatingStoryPage
   {
-    '1qji74qr': {
+    'hucvb1cj': {
       'en': 'We are generating your story',
       'es': '',
       'pt': '',

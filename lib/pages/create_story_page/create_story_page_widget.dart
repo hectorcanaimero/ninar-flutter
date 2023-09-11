@@ -6,9 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/flutter_flow/admob_util.dart' as admob;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'create_story_page_model.dart';
@@ -33,18 +31,6 @@ class _CreateStoryPageWidgetState extends State<CreateStoryPageWidget> {
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'CreateStoryPage'});
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      logFirebaseEvent('CREATE_STORY_CreateStoryPage_ON_INIT_STA');
-      logFirebaseEvent('CreateStoryPage_ad_mob');
-
-      admob.loadInterstitialAd(
-        "",
-        "ca-app-pub-1769333170353019/5418958657",
-        true,
-      );
-    });
-
     _model.textController ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }

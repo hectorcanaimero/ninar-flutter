@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/admob_util.dart' as admob;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -18,8 +17,6 @@ class CreatingStoryPageModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [AdMob - Show Interstitial Ad] action in CreatingStoryPage widget.
-  bool? interstitialAdSuccess;
   // Stores action output result for [Backend Call - API (Story Generation)] action in CreatingStoryPage widget.
   ApiCallResponse? apiResult0yi;
   // Stores action output result for [Backend Call - API (Image Generation)] action in CreatingStoryPage widget.
